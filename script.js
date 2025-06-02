@@ -2,7 +2,7 @@ const form = document.querySelector('form');
 
 const pattern = {
     email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-    password: /^.{8,}$/ // Упрощённый regex: минимум 8 символов
+    password: /^.{8,}$/ 
 };
 
 function validate(data) {
@@ -13,8 +13,8 @@ function validate(data) {
         const value = data[key];
         const result = regex.test(value);
         const input = document.querySelector(`input[name="${key}"]`);
-        input.classList.remove('valid', 'invalid'); // Сбрасываем классы
-        input.classList.add(result ? 'valid' : 'invalid'); // Добавляем нужный класс
+        input.classList.remove('valid', 'invalid'); 
+        input.classList.add(result ? 'valid' : 'invalid'); 
 
         if (!result) {
             errors.push(`${key} is invalid`);
@@ -24,7 +24,7 @@ function validate(data) {
     return errors;
 }
 
-// Добавленные три строчки:
+
 document.querySelector('#email').addEventListener('input', () => validate({ email: document.querySelector('#email').value }));
 document.querySelector('#password').addEventListener('input', () => validate({ password: document.querySelector('#password').value }));
 form.addEventListener('submit', e => e.preventDefault() || validate(Object.fromEntries(new FormData(form))));
